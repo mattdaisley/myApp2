@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title *ngIf="profile">{{profile.username}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content *ngIf="profile">
+
+  <ion-card>
+    <ion-card-header>
+      <b>General</b>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item no-padding class="no-padding">
+          <ion-label floating>First Name</ion-label>
+          <ion-input type="text" [(ngModel)]="profile.firstname"></ion-input>
+        </ion-item>
+        <ion-item no-padding class="no-padding">
+          <ion-label floating>Last Name</ion-label>
+          <ion-input type="text" [(ngModel)]="profile.lastname"></ion-input>
+        </ion-item>
+        <ion-item class="no-padding">
+          <ion-label floating>Email Address</ion-label>
+          <ion-input type="text" [(ngModel)]="profile.email"></ion-input>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <b>Notifications</b>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-label (click)="toggleNotifications()">Push Notifications</ion-label>
+          <ion-toggle [(ngModel)]="profile.notifications" (ionChange)="updateProfile()"></ion-toggle>
+        </ion-item>
+        <ion-item>
+          <ion-label (click)="toggleVibrate()">Vibrate</ion-label>
+          <ion-toggle [(ngModel)]="profile.vibrate" (ionChange)="updateProfile()" [disabled]="!profile.notifications"></ion-toggle>
+        </ion-item>
+        <ion-item>
+          <ion-label (click)="toggleSound()">Sound</ion-label>
+          <ion-toggle [(ngModel)]="profile.sound" (ionChange)="updateProfile()" [disabled]="!profile.notifications"></ion-toggle>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
