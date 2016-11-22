@@ -1,20 +1,12 @@
 home-page {
     .toolbar-background {
         border: none;
-        background: rgba(0, 0, 0, .2);
+        background: transparent;
     }
 
-    .slide {
-        background-repeat: no-repeat;
-        background-position: center; 
-    }
-    .slide1 {
-        background-image: url('../../assets/home/puppies1.jpg');
-    }
-    .slide2 {
-        background-image: url('../../assets/home/puppies2.jpg');
-    }
-    .slide3 {
-        background-image: url('../../assets/home/puppies3.jpg');
+    .slide-image {
+        max-height: 50%;
+        max-width: 80%;
+        margin: 18px 0;
     }
 }
