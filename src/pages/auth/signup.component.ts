@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { NavController, NavParams } from 'ionic-angular';
 
-import { HelloIonicPage } from '../hello-ionic/hello-ionic';
+import { HomePage, Profile } from '../';
 
-import { Profile } from '../profile/profile';
 import { AuthService } from './auth.service';
 
 @Component({
@@ -28,7 +27,7 @@ export class SignupPage implements OnInit {
 
   onSubmit(): void {
       this.submitted = true;
-      this.authService.putProfileToStorage(this.profile).then( () => { this.navCtrl.setRoot(HelloIonicPage); } );
+      this.authService.putProfileToStorage(this.profile).then( () => { this.navCtrl.setRoot(HomePage); } );
   }
 
   validateEmail(): void {

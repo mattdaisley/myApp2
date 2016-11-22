@@ -5,19 +5,22 @@ import { FormsModule }   from '@angular/forms';
 
 import { Storage } from '@ionic/storage';
 
-import { HelloIonicPage } from '../pages/hello-ionic/hello-ionic';
+import { HomePage } from '../pages/home/home';
 import { ItemDetailsPage } from '../pages/item-details/item-details';
 import { ListPage } from '../pages/list/list';
-import { ProfilePage } from '../pages/profile/profile.component';
-import { SignupPage } from '../pages/auth/signup.component';
-import { SignOut } from '../pages/auth/signout.component';
 
-import { AuthService } from '../pages/auth/auth.service';
+import { 
+  SignOut, 
+  SignupPage,
+  ProfilePage,
+  
+  AuthService
+} from '../pages';
 
 @NgModule({
   declarations: [
     MyApp,
-    HelloIonicPage,
+    HomePage,
     ItemDetailsPage,
     ListPage,
     ProfilePage,
@@ -31,7 +34,7 @@ import { AuthService } from '../pages/auth/auth.service';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HelloIonicPage,
+    HomePage,
     ItemDetailsPage,
     ListPage,
     ProfilePage,

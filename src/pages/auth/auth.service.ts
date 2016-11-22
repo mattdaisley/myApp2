@@ -3,7 +3,7 @@ import { Subject }    from 'rxjs/Subject';
 
 import { Storage } from '@ionic/storage';
 
-import { Profile } from '../profile/profile';
+import { Profile } from '../';
 // import { PROFILE } from './mock-profile';
 
 @Injectable()

@@ -6,14 +6,16 @@ import { Platform, MenuController, Nav } from 'ionic-angular';
 
 import { StatusBar } from 'ionic-native';
 
-import { HelloIonicPage } from '../pages/hello-ionic/hello-ionic';
-import { ListPage } from '../pages/list/list';
-import { ProfilePage } from '../pages/profile/profile.component';
-import { SignupPage } from '../pages/auth/signup.component';
-import { SignOut } from '../pages/auth/signout.component';
+import { 
+  HomePage,
+  ListPage,
+  SignOut, 
+  SignupPage,
+  ProfilePage,
 
-import { ProfileService } from '../pages/profile/profile.service';
-import { AuthService } from '../pages/auth/auth.service';
+  AuthService, 
+  ProfileService
+} from '../pages';
 
 
 @Component({
@@ -25,7 +27,7 @@ export class MyApp implements OnDestroy {
   subscription: Subscription;
 
   // make HelloIonicPage the root (or first) page
-  rootPage: any = HelloIonicPage;
+  rootPage: any = HomePage;
   pages: Array<{title: string, component: any}>;
   authPages: Array<{title: string, component: any}>;
 
@@ -55,7 +57,7 @@ export class MyApp implements OnDestroy {
   initializePages() {
     // set our app's pages
     this.pages = [
-      { title: 'Hello Ionic', component: HelloIonicPage },
+      { title: 'Home', component: HomePage },
       { title: 'My First List', component: ListPage }
     ];
     this.authPages = [];

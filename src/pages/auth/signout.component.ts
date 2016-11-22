@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { NavController, NavParams } from 'ionic-angular';
 
-import { SignupPage } from './signup.component';
+import { SignupPage, Profile } from '../';
 
-import { Profile } from '../profile/profile';
 import { AuthService } from './auth.service';
 
 @Component({
