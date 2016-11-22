@@ -4,6 +4,10 @@ import { NavController, NavParams, Searchbar } from 'ionic-angular';
 
 import { ItemDetailsPage } from '../';
 
+import { SearchOptions } from './search-options';
+import { SearchResult } from './search-result';
+import { SearchService } from './search.service';
+
 @Component({
   selector: 'search-page',
   templateUrl: 'search.html'
@@ -12,23 +16,19 @@ export class SearchPage {
 
   selectedItem: any;
   icons: string[];
-  nearby: Array<{title: string, address: string, id: number}>;
-  recent: Array<{title: string, address: string, id: number}>;
+  nearby: Array<SearchResult>;
+  recent: Array<SearchResult>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public searchService: SearchService) {
     // If we navigated to this page, we will have an item available as a nav param
 
-    this.nearby = [
-      { title: 'First person', address: '123 first st', id: 1 },
-      { title: 'Second person', address: '345 second dr', id: 2 },
-      { title: 'Third person', address: '678 third pl', id: 3 },
-      { title: 'Fourth person', address: '910 fourth circle', id: 4 }
-    ];
+    let nearbyOptions = new SearchOptions();
+    nearbyOptions.limit = 12;
+    this.searchService.getNearby( nearbyOptions ).then( nearby => {this.nearby = nearby; } );
 
-    this.recent = [
-      { title: 'Recent First person', address: '123 first st', id: 4 },
-      { title: 'Recent Second person', address: '345 second dr', id: 5 }
-    ];
+    let recentOptions = new SearchOptions();
+    recentOptions.limit = 2;
+    this.searchService.getRecent( recentOptions ).then( recent => {this.recent = recent; } );
   }
 
   itemTapped(event, item) {

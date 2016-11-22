@@ -15,7 +15,8 @@ import {
   ProfilePage,
   ProfileButton,
   
-  AuthService
+  AuthService,
+  SearchService
 } from '../pages';
 
 import { Focuser } from '../util/focuser.directive';
@@ -50,7 +51,8 @@ import { Focuser } from '../util/focuser.directive';
   ],
   providers: [
     Storage,
-    AuthService
+    AuthService,
+    SearchService
   ]
 })
 export class AppModule {}
