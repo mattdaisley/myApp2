@@ -3,7 +3,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title *ngIf="profile">{{profile.username}}</ion-title>
+    <ion-title>Account Settings</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -39,15 +39,15 @@
       <ion-list>
         <ion-item>
           <ion-label (click)="toggleNotifications()">Push Notifications</ion-label>
-          <ion-toggle [(ngModel)]="profile.notifications" (ionChange)="updateProfile()"></ion-toggle>
+          <ion-toggle [(ngModel)]="profile.notifications" color="secondary" (ionChange)="updateProfile()"></ion-toggle>
         </ion-item>
         <ion-item>
           <ion-label (click)="toggleVibrate()">Vibrate</ion-label>
-          <ion-toggle [(ngModel)]="profile.vibrate" (ionChange)="updateProfile()" [disabled]="!profile.notifications"></ion-toggle>
+          <ion-toggle [(ngModel)]="profile.vibrate" color="secondary" (ionChange)="updateProfile()" [disabled]="!profile.notifications"></ion-toggle>
         </ion-item>
         <ion-item>
           <ion-label (click)="toggleSound()">Sound</ion-label>
-          <ion-toggle [(ngModel)]="profile.sound" (ionChange)="updateProfile()" [disabled]="!profile.notifications"></ion-toggle>
+          <ion-toggle [(ngModel)]="profile.sound" color="secondary" (ionChange)="updateProfile()" [disabled]="!profile.notifications"></ion-toggle>
         </ion-item>
       </ion-list>
     </ion-card-content>

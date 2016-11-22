@@ -3,3 +3,4 @@ export * from './home';
 export * from './item-details';
 export * from './list';
 export * from './profile';
+export * from './search';

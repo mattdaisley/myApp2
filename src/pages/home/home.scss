@@ -1,0 +1,20 @@
+home-page {
+    .toolbar-background {
+        border: none;
+        background: rgba(0, 0, 0, .2);
+    }
+
+    .slide {
+        background-repeat: no-repeat;
+        background-position: center; 
+    }
+    .slide1 {
+        background-image: url('../../assets/home/puppies1.jpg');
+    }
+    .slide2 {
+        background-image: url('../../assets/home/puppies2.jpg');
+    }
+    .slide3 {
+        background-image: url('../../assets/home/puppies3.jpg');
+    }
+}

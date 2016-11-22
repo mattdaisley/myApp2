@@ -64,11 +64,10 @@ export class MyApp implements OnDestroy {
 
     this.profileService.getProfileFromStorage().then( profile => {
       if ( profile ) { 
-        this.authPages.push( { title: 'My Profile', component: ProfilePage } ); 
         this.authPages.push( { title: 'Sign Out', component: SignOut } ); 
       } else { 
-        this.authPages.push( { title: 'Signup', component: SignupPage } ); 
         this.authPages.push( { title: 'Signin', component: SignupPage } ); 
+        this.authPages.push( { title: 'Signup', component: SignupPage } ); 
       }
     });
   }

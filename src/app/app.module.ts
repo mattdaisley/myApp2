@@ -5,25 +5,31 @@ import { FormsModule }   from '@angular/forms';
 
 import { Storage } from '@ionic/storage';
 
-import { HomePage } from '../pages/home/home';
-import { ItemDetailsPage } from '../pages/item-details/item-details';
-import { ListPage } from '../pages/list/list';
-
 import { 
+  HomePage,
+  ItemDetailsPage,
+  ListPage,
+  SearchPage,
   SignOut, 
   SignupPage,
   ProfilePage,
+  ProfileButton,
   
   AuthService
 } from '../pages';
 
+import { Focuser } from '../util/focuser.directive';
+
 @NgModule({
   declarations: [
     MyApp,
+    Focuser,
     HomePage,
     ItemDetailsPage,
     ListPage,
     ProfilePage,
+    ProfileButton,
+    SearchPage,
     SignupPage,
     SignOut
   ],
@@ -38,6 +44,7 @@ import {
     ItemDetailsPage,
     ListPage,
     ProfilePage,
+    SearchPage,
     SignupPage,
     SignOut
   ],

@@ -3,7 +3,13 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Hello Ionic</ion-title>
+    
+    <ion-searchbar (click)="gotoSearch()"></ion-searchbar>
+
+    <ion-buttons end>
+        <profile-button></profile-button>
+    </ion-buttons>
+   
   </ion-navbar>
 </ion-header>
 
@@ -12,16 +18,43 @@
 
   <ion-slides pager>
 
-    <ion-slide style="background-color: green">
+    <ion-slide class="slide slide1">
       <h2>Slide 1</h2>
+      
+      <ion-footer no-shadow>
+        <ion-toolbar>
+            <ion-buttons right>
+                <button ion-button color="light" clear>Swipe Right</button>
+            </ion-buttons>
+        </ion-toolbar>
+      </ion-footer>
     </ion-slide>
 
-    <ion-slide style="background-color: blue">
+    <ion-slide class="slide slide2">
       <h2>Slide 2</h2>
+      
+      <ion-footer no-shadow>
+        <ion-toolbar>
+            <ion-buttons left>
+                <button ion-button color="light" clear>Swipe Left</button>
+            </ion-buttons>
+            <ion-buttons right>
+                <button ion-button color="light" clear>Swipe Right</button>
+            </ion-buttons>
+        </ion-toolbar>
+      </ion-footer>
     </ion-slide>
 
-    <ion-slide style="background-color: red">
+    <ion-slide class="slide slide3">
       <h2>Slide 3</h2>
+      
+      <ion-footer no-shadow>
+        <ion-toolbar>
+            <ion-buttons left>
+                <button ion-button color="light" clear>Swipe Left</button>
+            </ion-buttons>
+        </ion-toolbar>
+      </ion-footer>
     </ion-slide>
 
   </ion-slides>
