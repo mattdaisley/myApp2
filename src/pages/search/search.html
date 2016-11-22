@@ -13,16 +13,64 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
-      <ion-icon name="{{item.icon}}" item-left></ion-icon>
-      {{item.title}}
-      <div class="item-note" item-right>
-        {{item.note}}
-      </div>
-    </button>
-  </ion-list>
-  <div *ngIf="selectedItem" padding>
-    You navigated here from <b>{{selectedItem.title}}</b>
-  </div>
+  <ion-card>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col text-center>
+            <button ion-button round>
+              <div><ion-icon name="color-palette"></ion-icon></div>
+            </button>
+            <div class="services" color="primary">Color</div>
+          </ion-col>
+          <ion-col text-center>
+            <button ion-button round>
+              <div><ion-icon name="cut"></ion-icon></div>
+            </button>
+            <div class="services" color="primary">Haircut</div>
+          </ion-col>
+          <ion-col text-center>
+            <button ion-button round>
+              <div><ion-icon name="brush"></ion-icon></div>
+            </button>
+            <div class="services" color="primary">Make-up</div>
+          </ion-col>
+          <ion-col text-center>
+            <button ion-button round>
+              <div><ion-icon name="arrow-down"></ion-icon></div>
+            </button>
+            <div class="services" color="primary">More</div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+      <ion-list>
+        <button class="list-item" ion-item *ngFor="let item of recent" (click)="itemTapped($event, item)">
+          <ion-icon name="time" small item-left></ion-icon>
+          <h3>{{item.title}}</h3>
+          <p>{{item.address}}</p>
+        </button>
+        <button ion-item>
+          <ion-icon item-left></ion-icon>
+          <h3>MORE FROM HISTORY</h3>
+        </button>
+      </ion-list>
+  </ion-card>
+
+  <ion-card>
+      <ion-list>
+        <button class="list-item" ion-item *ngFor="let item of nearby" (click)="itemTapped($event, item)">
+          <ion-icon name="pin" small item-left></ion-icon>
+          <h3>{{item.title}}</h3>
+          <p>{{item.address}}</p>
+        </button>
+        <button ion-item>
+          <ion-icon item-left></ion-icon>
+          <h3>MORE NEARBY</h3>
+        </button>
+      </ion-list>
+  </ion-card>
 </ion-content>
