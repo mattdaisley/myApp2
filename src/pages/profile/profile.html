@@ -17,15 +17,15 @@
       <ion-list>
         <ion-item no-padding class="no-padding">
           <ion-label floating>First Name</ion-label>
-          <ion-input type="text" [(ngModel)]="profile.firstname"></ion-input>
+          <ion-input type="text" [(ngModel)]="profile.firstname" (keyup)="updateProfile()"></ion-input>
         </ion-item>
         <ion-item no-padding class="no-padding">
           <ion-label floating>Last Name</ion-label>
-          <ion-input type="text" [(ngModel)]="profile.lastname"></ion-input>
+          <ion-input type="text" [(ngModel)]="profile.lastname" (keyup)="updateProfile()"></ion-input>
         </ion-item>
         <ion-item class="no-padding">
           <ion-label floating>Email Address</ion-label>
-          <ion-input type="text" [(ngModel)]="profile.email"></ion-input>
+          <ion-input type="text" [(ngModel)]="profile.email" (keyup)="updateProfile()"></ion-input>
         </ion-item>
       </ion-list>
     </ion-card-content>

@@ -4,7 +4,7 @@ export class Profile {
   username: string;
   firstname: string;
   lastname: string;
-  notifications: boolean;
-  vibrate: boolean;
-  sound: boolean;
+  notifications: boolean = true;
+  vibrate: boolean = true;
+  sound: boolean = true;
 }

@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Sign Up</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content *ngIf="profile">
+
+  <ion-card>
+      <ion-card-content>
+        <form (ngSubmit)="onSubmit()" #signupForm="ngForm">
+            <ion-item no-padding class="no-padding">
+                <ion-label floating>First Name</ion-label>
+                <ion-input type="text" [(ngModel)]="profile.firstname" name="firstname" #firstname="ngModel" required></ion-input>
+            </ion-item>
+            <div *ngIf="!firstname.valid && !firstname.pristine" class="alert alert-danger">First Name Required</div>
+            <ion-item no-padding class="no-padding">
+                <ion-label floating>Last Name</ion-label>
+                <ion-input type="text" [(ngModel)]="profile.lastname" name="lastname" #lastname="ngModel" required></ion-input>
+            </ion-item>
+            <div *ngIf="!lastname.valid && !lastname.pristine" class="alert alert-danger">Last Name Required</div>
+            <ion-item class="no-padding">
+                <ion-label floating>Email Address</ion-label>
+                <ion-input [(ngModel)]="profile.email" type="text" email name="email" #email="ngModel" required (keyup)="validateEmail()"></ion-input>
+            </ion-item>
+            <div *ngIf="!email.valid && !email.pristine" class="alert alert-danger">Last Name Required</div>
+            <div text-center padding-top>
+                <button ion-button color="primary" type="submit" [disabled]="!signupForm.form.valid">Create Your Account</button>
+            </div>
+        </form>
+     </ion-card-content>
+  </ion-card>
+
+</ion-content>

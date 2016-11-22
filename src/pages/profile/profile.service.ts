@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
+import { Subject }    from 'rxjs/Subject';
 
 import { Storage } from '@ionic/storage';
 
 import { Profile } from './profile';
-import { PROFILE } from './mock-profile';
+// import { PROFILE } from './mock-profile';
 
 @Injectable()
 export class ProfileService {
@@ -39,7 +40,9 @@ export class ProfileService {
   putProfileToStorage( profile:Profile): Promise<Profile> {
     return new Promise<Profile>( resolve =>
       this.storage.set('profile', profile ).then( () => 
-        this.getProfileFromStorage().then( profile => resolve(profile) )
+        this.getProfileFromStorage().then( profile => {
+          resolve(profile);
+        })
       )
     )
   }

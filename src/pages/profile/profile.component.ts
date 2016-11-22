@@ -9,14 +9,13 @@ import { ProfileService } from './profile.service';
 @Component({
   selector: 'profile-page',
   templateUrl: 'profile.html',
-  providers: [ProfileService]
+  providers: [ ProfileService ]
 })
 export class ProfilePage implements OnInit {
   profile: Profile;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private profileService: ProfileService) {
     // If we navigated to this page, we will have an item available as a nav param
-    
   }
 
   ngOnInit(): void {
@@ -29,7 +28,7 @@ export class ProfilePage implements OnInit {
   }
 
   updateProfile(): void {
-    this.profileService.updateProfile( this.profile ).then( profile => console.log(profile) );
+    this.profileService.updateProfile( this.profile ).then( /*profile => console.log(profile)*/ );
   }
 
   toggleNotifications(): void {
