@@ -1,4 +1,4 @@
-import { SearchResult } from './search-result';
+import { SearchResult } from '../search-result';
 export const NEARBY: SearchResult[] = [
     {
         id: 1, 

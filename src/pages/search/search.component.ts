@@ -14,8 +14,6 @@ import { SearchService } from './search.service';
 })
 export class SearchPage {
 
-  selectedItem: any;
-  icons: string[];
   nearby: Array<SearchResult>;
   recent: Array<SearchResult>;
 
@@ -31,7 +29,7 @@ export class SearchPage {
     this.searchService.getRecent( recentOptions ).then( recent => {this.recent = recent; } );
   }
 
-  itemTapped(event, item) {
+  itemTapped(event, item:SearchResult) {
     this.navCtrl.push(ItemDetailsPage, {
       item: item
     });

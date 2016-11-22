@@ -1,4 +1,4 @@
-import { SearchResult } from './search-result';
+import { SearchResult } from '../search-result';
 export const RECENTHISTORY: SearchResult[] = [
     {
         id: 1, 
