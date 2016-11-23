@@ -1,53 +1,21 @@
 <ion-header>
   <ion-navbar color="primary">
-    <button menuToggle *ngIf="!selectedItem">
+    <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
+    
     <ion-title>Item Details</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
 
-  <ion-grid>
-    <ion-row responsive-sm>
-      <ion-col>
+  <div id="map" #map></div>
 
-        <ion-card>
-          <ion-card-header>
-            <b>{{selectedItem.title}}</b>
-            <ion-icon name="{{selectedItem.icon}}"></ion-icon>
-          </ion-card-header>
-          <ion-card-content>
-           <div *ngIf="selectedItem" class="selection">
-              
-              <div>
-                You navigated here from <b>{{selectedItem.title}}</b>
-              </div>
-            </div>
-          </ion-card-content>
-        </ion-card>
-
-      </ion-col>
-      <ion-col>
-
-        <ion-card>
-          <ion-card-header>
-            <b>{{selectedItem.title}}</b>
-            <ion-icon name="{{selectedItem.icon}}"></ion-icon>
-          </ion-card-header>
-          <ion-card-content>
-           <div *ngIf="selectedItem" class="selection">
-              
-              <div>
-                You navigated here from <b>{{selectedItem.title}}</b>
-              </div>
-            </div>
-          </ion-card-content>
-        </ion-card>
-        
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <ion-card *ngIf="lat || lng">
+    <ion-card-content>
+      Lat: {{lat}}, Lng: {{lng}}
+    </ion-card-content>
+  </ion-card>
 
 </ion-content>
