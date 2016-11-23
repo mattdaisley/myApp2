@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { NavController, NavParams, Loading, LoadingController } from 'ionic-angular';
 
@@ -16,7 +16,7 @@ declare var google;
   templateUrl: 'item-details.html',
   providers: []
 })
-export class ItemDetailsPage {
+export class ItemDetailsPage implements OnInit {
   map:any;
 
   lat: number;
@@ -27,17 +27,21 @@ export class ItemDetailsPage {
   apiKey: String = CONFIG.API_KEY_FOR_JS;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController) {
-  	 this.loadMap();
+  }
+
+  ngOnInit() {
+    this.loadMap();
   }
 
   loadMap(){
+
+    this.loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+
+    this.loading.present();
+
     if(typeof google == "undefined" || typeof google.maps == "undefined"){
-
-      this.loading = this.loadingCtrl.create({
-        content: 'Please wait...'
-      });
-
-      this.loading.present();
   
       console.log("Google maps JavaScript needs to be loaded.");
       // this.disableMap();
@@ -60,6 +64,8 @@ export class ItemDetailsPage {
 
       document.body.appendChild(script);  
   
+    } else {
+      this.initMap();
     }
   }
 
