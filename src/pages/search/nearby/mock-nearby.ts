@@ -20,4 +20,14 @@ export const NEARBY: SearchResult[] = [
         title: 'fourth person',
         address: '000 fourth cir'
     },
+    {
+        id: 5, 
+        title: 'fifth person',
+        address: '500 third ave'
+    },
+    {
+        id: 6, 
+        title: 'sixth person',
+        address: '600 fourth cir'
+    },
 ];

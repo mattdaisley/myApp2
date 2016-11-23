@@ -53,7 +53,7 @@
           <h3>{{item.title}}</h3>
           <p>{{item.address}}</p>
         </button>
-        <button ion-item>
+        <button ion-item (click)="gotoRecent()">
           <ion-icon item-left></ion-icon>
           <h3>MORE FROM HISTORY</h3>
         </button>
@@ -67,7 +67,7 @@
           <h3>{{item.title}}</h3>
           <p>{{item.address}}</p>
         </button>
-        <button ion-item>
+        <button ion-item (click)="gotoNearby()">
           <ion-icon item-left></ion-icon>
           <h3>MORE NEARBY</h3>
         </button>

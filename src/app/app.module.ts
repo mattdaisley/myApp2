@@ -14,6 +14,8 @@ import {
   SignupPage,
   ProfilePage,
   ProfileButton,
+  RecentPage,
+  NearbyPage,
   
   AuthService,
   SearchService
@@ -32,7 +34,9 @@ import { Focuser } from '../util/focuser.directive';
     ProfileButton,
     SearchPage,
     SignupPage,
-    SignOut
+    SignOut,
+    RecentPage,
+    NearbyPage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -47,7 +51,9 @@ import { Focuser } from '../util/focuser.directive';
     ProfilePage,
     SearchPage,
     SignupPage,
-    SignOut
+    SignOut,
+    RecentPage,
+    NearbyPage
   ],
   providers: [
     Storage,

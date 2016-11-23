@@ -8,7 +8,6 @@ import { StatusBar } from 'ionic-native';
 
 import { 
   HomePage,
-  ItemDetailsPage,
   SearchPage,
   SignOut, 
   SignupPage,
@@ -27,7 +26,7 @@ export class MyApp implements OnDestroy {
   subscription: Subscription;
 
   // make HelloIonicPage the root (or first) page
-  rootPage: any = ItemDetailsPage;
+  rootPage: any = HomePage;
   pages: Array<{title: string, component: any}>;
   authPages: Array<{title: string, component: any}>;
 

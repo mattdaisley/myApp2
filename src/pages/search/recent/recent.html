@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    
+    <ion-searchbar focuser #searchbar (ionInput)="filterEvent($event)"></ion-searchbar>
+
+    <ion-buttons end>
+        <profile-button></profile-button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card>
+      <ion-list>
+        <button class="list-item" ion-item *ngFor="let item of data | async" (click)="itemTapped($event, item)">
+          <ion-icon name="time" small item-left></ion-icon>
+          <h3>{{item.title}}</h3>
+          <p>{{item.address}}</p>
+        </button>
+        <button ion-item>
+          <ion-icon item-left></ion-icon>
+          <h3>Load More</h3>
+        </button>
+      </ion-list>
+  </ion-card>
+  
+</ion-content>

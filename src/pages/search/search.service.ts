@@ -5,8 +5,8 @@ import { Storage } from '@ionic/storage';
 import { SearchResult } from './search-result';
 import { SearchOptions } from './search-options';
 
-import { RECENTHISTORY } from './mock/mock-recent';
-import { NEARBY } from './mock/mock-nearby';
+import { RECENTHISTORY } from './recent/mock-recent';
+import { NEARBY } from './nearby/mock-nearby';
 
 @Injectable()
 export class SearchService {

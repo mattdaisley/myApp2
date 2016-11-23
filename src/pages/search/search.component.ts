@@ -3,6 +3,8 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 import { ItemDetailsPage } from '../';
+import { RecentPage } from './recent/recent.component';
+import { NearbyPage } from './nearby/nearby.component';
 
 import { SearchOptions } from './search-options';
 import { SearchResult } from './search-result';
@@ -33,5 +35,13 @@ export class SearchPage {
     this.navCtrl.push(ItemDetailsPage, {
       item: item
     });
+  }
+
+  gotoRecent() {
+    this.navCtrl.push(RecentPage);
+  }
+
+  gotoNearby() {
+    this.navCtrl.push(NearbyPage);
   }
 }
