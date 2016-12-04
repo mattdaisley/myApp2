@@ -42,9 +42,7 @@ export class NearbyPage {
   }
 
   itemTapped(event, item:SearchResult) {
-    this.navCtrl.push(ItemDetailsPage, {
-      item: item
-    });
+    console.log(item);
   }
 
   filterEvent(ev: any) {

@@ -1,26 +1,47 @@
-<ion-header>
-  <ion-navbar color="primary">
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
+
     
-    <ion-title>Item Details</ion-title>
+    <ion-header no-shadow>
+<ion-navbar color="light">
+  <button ion-button menuToggle *ngIf="!showSearch">
+    <ion-icon name="menu"></ion-icon>
+  </button>
+  <button ion-button clear color="dark" large class="search-back" (click)="collapse()" *ngIf="showSearch">
+    <ion-icon name="arrow-back"></ion-icon>
+  </button>
 
-     <ion-buttons end>
-        <profile-button></profile-button>
-    </ion-buttons>
-   
-  </ion-navbar>
-</ion-header>
+</ion-navbar>
+    </ion-header>
 
-<ion-content>
+<ion-content fullscreen="true">
 
   <div id="map" #map></div>
+  
+  <div class="float-toolbar">
 
-  <ion-card *ngIf="lat || lng">
-    <ion-card-content>
-      Lat: {{lat}}, Lng: {{lng}}
-    </ion-card-content>
-  </ion-card>
+  </div>
+
+  <div class="float-searchbar" [ngClass]="{'show-search': showSearch}">
+    <ion-searchbar (ionFocus)="gotoSearch()" no-shadow></ion-searchbar>
+  </div>
+
+  <div class="float-map-actions" *ngIf="lat || lng">
+    <button ion-button icon-left>
+      <ion-icon name="star"></ion-icon>
+      Lat: {{lat}}
+    </button>
+
+    <button ion-button icon-right>
+      Lng: {{lng}}
+      <ion-icon name="star"></ion-icon>
+    </button>
+
+  </div>
+
+  <div class="search-overlay" *ngIf="showSearch">
+    <ion-scroll scrollY="true">
+    <search-page></search-page>
+    </ion-scroll>
+  </div>
 
 </ion-content>
+

@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
+import { animate, state, style, transition, trigger } from '@angular/core';
 
-import { NavController, NavParams, Loading, LoadingController } from 'ionic-angular';
+import { NavController, NavParams, Loading, LoadingController, Keyboard } from 'ionic-angular';
+
+// import { SearchPage } from '../';
 
 import { Geolocation } from 'ionic-native';
 // import { GoogleMap } from 'ionic-native';
@@ -14,22 +17,45 @@ declare var google;
 @Component({
   selector: 'item-details-page',
   templateUrl: 'item-details.html',
-  providers: []
+  providers: [],
+  animations: [
+    trigger(
+      'openClose',
+      [
+        state('collapsed, void', style({
+          transform: 'translateY(100%)'
+        })),
+        state('expanded', style({
+          transform: 'translateY(0)'
+        })),
+        transition('collapsed <=> expanded', animate('400ms ease-in-out'))
+      ]
+    )
+  ]
 })
-export class ItemDetailsPage implements OnInit {
-  map:any;
+export class ItemDetailsPage implements AfterViewInit {
+  showSearch:boolean = false;
 
+  apiKey: String = CONFIG.API_KEY_FOR_JS;
+  map:any;
+  marker: any;
   lat: number;
   lng: number;
 
   loading: Loading;
 
-  apiKey: String = CONFIG.API_KEY_FOR_JS;
+  stateExpression: string;
+  expand() { this.stateExpression = 'expanded'; this.showSearch = true; }
+  collapse() { this.stateExpression = 'collapsed'; this.showSearch = false; }
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController, public keyboard: Keyboard) {
+    this.collapse();
   }
 
-  ngOnInit() {
+  ngAfterViewInit() {
+    let script = document.getElementById('googleMaps');
+    if ( script ) script.parentNode.removeChild(script);
+
     this.loadMap();
   }
 
@@ -39,14 +65,9 @@ export class ItemDetailsPage implements OnInit {
       content: 'Please wait...'
     });
 
-    this.loading.present();
-
     if(typeof google == "undefined" || typeof google.maps == "undefined"){
-  
-      console.log("Google maps JavaScript needs to be loaded.");
-      // this.disableMap();
-  
-      console.log("online, loading map");
+
+      this.loading.present();
 
       //Load the SDK
       window['mapInit'] = () => {
@@ -66,39 +87,56 @@ export class ItemDetailsPage implements OnInit {
   
     } else {
       this.initMap();
-    }
+    } 
   }
 
   initMap() {
-    console.log('loading map');
 
     let options = {timeout: 10000, enableHighAccuracy: true};
-    //ENABLE THE FOLLOWING:
-    
-    Geolocation.getCurrentPosition(options).then((position) => {
-      this.lat = position.coords.latitude;
-      this.lng = position.coords.longitude;
-      let latLng = new google.maps.LatLng(this.lat, this.lng);
-      let mapOptions = {
-        center: latLng,
-        zoom: 15,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-      }
 
-      this.map = new google.maps.Map(document.querySelector('#map'), mapOptions);
-      var x = document.querySelector('#map');
-      console.log(x);
+    this.lat = 39.8055381;
+    this.lng = -105.082577;
 
-      let marker = new google.maps.Marker({
-        position: latLng,
-        map: this.map,
-        title: 'You',
+    if ( !this.lat || !this.lng ) {
+      Geolocation.getCurrentPosition(options).then((position) => {
+        this.lat = position.coords.latitude;
+        this.lng = position.coords.longitude;
+
+        this.drawMap();
       });
-      
-      this.loading.dismiss();
-
-       /* var element = angular.element(document.querySelector('#mycart'));
-                element.text(basket.cartDataCounter());*/
-    });
+    } else {
+      this.drawMap();
+    }
   }
+
+  drawMap() {
+    let latLng = new google.maps.LatLng(this.lat, this.lng);
+
+    let mapOptions = {
+      center: latLng,
+      zoom: 15,
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      disableDefaultUI: true
+    }
+
+    this.map = new google.maps.Map(document.querySelector('#map'), mapOptions);
+    // var x = document.querySelector('#map');
+
+    this.marker = new google.maps.Marker({
+      position: latLng,
+      map: this.map,
+      title: 'You',
+    });
+
+    this.loading.dismiss();
+  }
+
+  gotoSearch() {
+    this.expand();
+    // this.keyboard.close();
+    // this.navCtrl.push(SearchPage);
+  }
+
+
+  
 }

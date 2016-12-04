@@ -32,9 +32,7 @@ export class SearchPage {
   }
 
   itemTapped(event, item:SearchResult) {
-    this.navCtrl.push(ItemDetailsPage, {
-      item: item
-    });
+    console.log(item);
   }
 
   gotoRecent() {

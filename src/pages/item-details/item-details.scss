@@ -1,10 +1,84 @@
+
+
 item-details-page {
+
+  ion-header {
+      background: transparent;
+
+      div.toolbar-background {
+          border: none;
+          background: transparent;
+      }
+  }
+
+  div.float-toolbar {
+    position: absolute;
+    top: 24px;
+    width: 100%;
+
+    button.search-back {
+      height: 32px;
+      padding: 0 15px;
+    }
+  }
+
+
+  div.float-searchbar {
+    position: absolute;
+    top: 80px;
+    width: calc(100% - 120px);
+    margin: 0 60px;
+
+    ion-searchbar {
+      background-color: #FFF;
+      padding: 0;
+    }
+  }
+
+  div.float-searchbar.show-search {
+    top: 32px;
+  }
 
   div#map {
     width: 100%;
-    min-height: 300px;
-    border: 1px solid #ccc;
+    height: 100%;
+    position: absolute;
   }
-  
+
+  div.float-map-actions {
+    position:absolute;
+    bottom: 40px;
+    padding: 40px;
+    width: 100%; 
+    text-align: center;
+  }
+
+  div.search-overlay {
+    background-color: #FFF;
+    position: absolute;
+    width: 100%;
+    height: -webkit-calc(100% - 80px);
+    height:    -moz-calc(100% - 80px);
+    height:         calc(100% - 80px);
+    top: 90px;
+    border-top: 1px solid #ccc;
+    
+    ion-scroll { 
+      height: 100%;
+    }
+  }
 }
 
+.platform-ios {
+
+  item-details-page {
+
+    div.float-toolbar {
+      position: absolute;
+      top: 28px;
+      width: 100%;
+    }
+
+  }
+
+}
